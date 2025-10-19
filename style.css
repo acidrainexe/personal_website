@@ -1,0 +1,196 @@
+:root {
+    --bg-color: #0d0d0d; /* Dark background */
+    --text-color-primary: #f0f0f0; /* Light text */
+    --text-color-secondary: #aaaaaa; /* Lighter grey for descriptions */
+    --accent-color: #007bff; /* Or whatever blue the dot is */
+    --font-heading: 'Poppins', sans-serif; /* Example font */
+    --font-body: 'Roboto', sans-serif; /* Example font */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text-color-primary);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1400px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 0 40px; /* Padding on sides */
+}
+
+/* Basic text styles */
+p { margin-bottom: 1em; }
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--text-color-primary);
+    line-height: 1.1;
+    margin-top: 0;
+}
+.section-title {
+    color: var(--text-color-secondary);
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5em;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start; /* Align logo to the left */
+    align-items: center;
+    padding: 30px 0; /* Adjust padding as needed */
+    position: relative;
+    z-index: 10; /* Ensure it's above other content if necessary */
+}
+
+.logo img {
+    height: 40px; /* Adjust logo size */
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Content slightly wider than image */
+    gap: 40px; /* Space between columns */
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Adjust to fit screen - header height */
+    position: relative; /* For the background text */
+    padding-bottom: 100px; /* Space below if needed */
+}
+
+.hero-content {
+    padding-right: 20px; /* Space from image */
+}
+
+.greeting {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--text-color-secondary);
+}
+
+.name {
+    font-size: 5em; /* Large text */
+    font-weight: 800; /* Extra bold */
+    margin-bottom: 0.2em;
+    text-transform: capitalize;
+}
+
+.name .dot {
+    color: var(--accent-color); /* Blue dot */
+}
+
+.description {
+    font-size: 1.1em;
+    max-width: 500px; /* Control line length */
+    color: var(--text-color-secondary);
+    margin-bottom: 2em;
+}
+
+.scroll-link {
+    display: inline-block;
+    color: var(--text-color-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--text-color-primary);
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.scroll-link:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+}
+
+/* Background "product" text */
+.hero-section::before {
+    content: "CREATE"; /* The faded background text */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center it */
+    font-size: 15vw; /* Make it large and responsive */
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05); /* Very faint white */
+    z-index: 0; /* Send it behind other content */
+    pointer-events: none; /* Make it not clickable */
+    white-space: nowrap; /* Prevent wrapping */
+    font-family: var(--font-heading);
+}
+
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Skills column, then about column */
+    gap: 80px; /* More space between these sections */
+    padding: 100px 0; /* Vertical padding */
+    align-items: start; /* Align tops of content */
+}
+
+.skills-list {
+    font-size: 2.5em; /* Large skill text */
+    font-weight: 700;
+    margin-bottom: 2em; /* Space before next section title */
+    max-width: 400px; /* Control line length */
+}
+
+.about-text {
+    font-size: 1.05em;
+    color: var(--text-color-secondary);
+}
+
+@media (max-width: 1024px) {
+    .hero-section {
+        grid-template-columns: 1fr; /* Stack columns */
+        text-align: center;
+        padding-top: 50px;
+    }
+    .hero-content {
+        padding-right: 0;
+    }
+    .hero-image {
+        order: -1; /* Place image above content on small screens */
+        margin-bottom: 40px;
+    }
+    .name {
+        font-size: 4em;
+    }
+    .hero-section::before {
+        font-size: 25vw; /* Adjust background text size */
+        top: 20%; /* Move up a bit */
+    }
+
+    .about-section {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 40px;
+        text-align: center;
+    }
+    .skills-list {
+        font-size: 2em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    .name {
+        font-size: 3em;
+    }
+    .description {
+        font-size: 1em;
+    }
+    .skills-list {
+        font-size: 1.8em;
+    }
+}
